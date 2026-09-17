@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>cagan-market</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <div id="app" class="hidden">
+        <section class="panel">
+            <header class="top panelDrag" title="Drag to move">
+                <div>
+                    <h1 id="shopName">cagan-market</h1>
+                    <p id="marketType">Store</p>
+                </div>
+            </header>
+
+            <div class="toolbar">
+                <input id="searchInput" type="text" placeholder="Search..." />
+                <div class="cartBox">
+                    <span id="cartTitle">Cart</span>
+                    <strong id="cartTotal">$0.00</strong>
+                </div>
+            </div>
+
+            <div id="items" class="items"></div>
+
+            <footer class="bottom">
+                <button id="closeBtn" class="imageBtn" type="button" aria-label="Close">
+                    <img src="./img/kapat.png" alt="" />
+                    <span id="closeBtnText">Close</span>
+                </button>
+                <img class="bottomLogo" src="./img/logoortal.png" alt="Logo" />
+                <button id="buyBtn" class="imageBtn" type="button" aria-label="Purchase">
+                    <img src="./img/satnal.png" alt="" />
+                    <span id="buyBtnText">Purchase</span>
+                </button>
+            </footer>
+        </section>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

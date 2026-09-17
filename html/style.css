@@ -1,0 +1,341 @@
+:root {
+    --bg: #0d0f14;
+    --panel: rgba(13, 16, 24, 0.92);
+    --card: rgba(32, 38, 53, 0.85);
+    --soft: #9ca7b5;
+    --text: #f3f5f9;
+    --accent: #e74b4b;
+    --gold: #f0c55b;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: "Noto Sans", "Segoe UI", system-ui, sans-serif;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    background: transparent;
+}
+
+#app {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding-left: 12vw;
+}
+
+#app.app--floating {
+    padding-left: 0;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.panel {
+    width: 440px;
+    max-height: 90vh;
+    position: relative;
+    background-image: url("./img/main-bg.png");
+    background-size: calc(100% + 4px) calc(100% + 4px);
+    background-position: center center;
+    background-repeat: no-repeat;
+    color: var(--text);
+    border: none;
+    border-radius: 16px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    padding: 18px;
+    padding-bottom: 74px;
+    gap: 14px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+}
+
+.top {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.panelDrag {
+    cursor: grab;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: none;
+}
+
+.panel--dragging .panelDrag {
+    cursor: grabbing;
+}
+
+.top h1 {
+    font-size: 27px;
+    font-weight: 700;
+    position: relative;
+    left: 8px;
+    top: -1px;
+}
+
+.top p {
+    margin-top: 4px;
+    color: var(--soft);
+    font-size: 14px;
+    position: relative;
+    left: 8px;
+    top: -1px;
+}
+
+.toolbar {
+    display: flex;
+    gap: 10px;
+    margin-top: 4px;
+}
+
+#searchInput {
+    flex: 1;
+    height: 42px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.04);
+    color: var(--text);
+    padding: 0 12px;
+    outline: none;
+}
+
+.cartBox {
+    min-width: 120px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    font-size: 13px;
+}
+
+#cartTotal {
+    color: var(--gold);
+}
+
+.items {
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding-right: 0;
+    padding-bottom: 120px;
+    height: 470px;
+    min-height: 470px;
+    max-height: 470px;
+    overflow-x: hidden;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.items::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+}
+
+.item {
+    display: grid;
+    grid-template-columns: 56px 1fr auto;
+    gap: 10px;
+    position: relative;
+    border-radius: 12px;
+    padding: 12px 14px;
+    border: none;
+    isolation: isolate;
+}
+
+.item::before {
+    content: "";
+    position: absolute;
+    inset: 5% 2%;
+    background-image: url("./img/itembg.png");
+    background-size: 100% 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.item > * {
+    position: relative;
+    z-index: 1;
+}
+
+.item img {
+    width: 56px;
+    height: 56px;
+    border-radius: 10px;
+    object-fit: contain;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 7px;
+}
+
+.itemName {
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.itemDesc {
+    color: var(--soft);
+    font-size: 13px;
+    margin-top: 2px;
+}
+
+.itemCat {
+    margin-top: 5px;
+    color: var(--gold);
+    font-size: 12px;
+}
+
+.itemRight {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.price {
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.qtyBox {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.qtyBtn {
+    width: 24px;
+    height: 24px;
+    border-radius: 7px;
+    border: none;
+    background: rgba(255, 255, 255, 0.14);
+    color: var(--text);
+    cursor: pointer;
+}
+
+.qty {
+    min-width: 22px;
+    text-align: center;
+}
+
+.bottom {
+    position: absolute;
+    left: 10px;
+    right: 10px;
+    bottom: 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    pointer-events: none;
+    z-index: 25;
+}
+
+.imageBtn {
+    border: none;
+    background: transparent;
+    padding: 0;
+    line-height: 0;
+    cursor: pointer;
+    pointer-events: auto;
+    width: 203px;
+    height: 50px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.imageBtn img {
+    position: absolute;
+    inset: 0;
+    width: 203px;
+    height: 50px;
+    display: block;
+    object-fit: cover;
+    object-position: center bottom;
+    pointer-events: none;
+}
+
+.imageBtn span {
+    position: relative;
+    z-index: 31;
+    font-family: var(--font-display, "Noto Sans", sans-serif);
+    font-size: 12.5px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: #f3f5f9;
+    text-transform: uppercase;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
+    pointer-events: none;
+    user-select: none;
+    display: inline-block;
+    white-space: nowrap;
+}
+
+#closeBtn span {
+    transform: translate(-51px, 6px);
+}
+
+#buyBtn span {
+    transform: translate(51px, 6px);
+    font-size: 11.5px;
+    letter-spacing: 0.07em;
+}
+
+.bottomLogo {
+    position: absolute;
+    left: 50%;
+    bottom: -26px;
+    transform: translateX(-50%);
+    width: 448px;
+    height: 322px;
+    object-fit: cover;
+    object-position: center bottom;
+    display: block;
+    z-index: 26;
+}
+
+#closeBtn {
+    transform: none;
+    clip-path: none;
+    z-index: 30;
+}
+
+#buyBtn {
+    transform: none;
+    clip-path: none;
+    z-index: 30;
+}
+
+#buyBtn.disabled,
+#buyBtn:disabled {
+    opacity: 0.45;
+    pointer-events: none;
+    cursor: default;
+    filter: grayscale(0.6);
+}
+
+#closeBtn img {
+    transform: none;
+}
+
+#buyBtn img {
+    transform: none;
+}

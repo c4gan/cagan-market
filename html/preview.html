@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>cagan-market — Interactive Browser Preview</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+    <style>
+        body {
+            background-color: #111317 !important;
+            background-image: radial-gradient(circle at 30% 30%, #1e222a 0%, #0a0b0d 100%) !important;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0;
+            overflow: auto;
+        }
+        #app {
+            padding-left: 0 !important;
+            align-items: center !important;
+            justify-content: center !important;
+        }
+        .preview-bar {
+            position: fixed;
+            top: 14px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: rgba(18, 22, 31, 0.95);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            padding: 8px 18px;
+            border-radius: 24px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+            z-index: 9999;
+            color: #d1d5db;
+            font-size: 13px;
+        }
+        .preview-bar strong {
+            color: #f0c55b;
+        }
+        .preview-pill {
+            background: rgba(240, 197, 91, 0.15);
+            color: #f0c55b;
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+    </style>
+</head>
+<body>
+    <div class="preview-bar">
+        <span class="preview-pill">Browser Preview</span>
+        <span>Store: <strong>Valentine General Store</strong></span>
+        <span>• Drag the header to reposition panel</span>
+    </div>
+
+    <div id="app">
+        <section class="panel">
+            <header class="top panelDrag" title="Drag to move">
+                <div>
+                    <h1 id="shopName">Valentine General Store</h1>
+                    <p id="marketType">General Store</p>
+                </div>
+            </header>
+
+            <div class="toolbar">
+                <input id="searchInput" type="text" placeholder="Search..." />
+                <div class="cartBox">
+                    <span id="cartTitle">Cart</span>
+                    <strong id="cartTotal">$0.00</strong>
+                </div>
+            </div>
+
+            <div id="items" class="items"></div>
+
+            <footer class="bottom">
+                <button id="closeBtn" class="imageBtn" type="button" aria-label="Close">
+                    <img src="./img/kapat.png" alt="" />
+                    <span id="closeBtnText">Close</span>
+                </button>
+                <img class="bottomLogo" src="./img/logoortal.png" alt="Logo" />
+                <button id="buyBtn" class="imageBtn" type="button" aria-label="Purchase">
+                    <img src="./img/satnal.png" alt="" />
+                    <span id="buyBtnText">Purchase</span>
+                </button>
+            </footer>
+        </section>
+    </div>
+
+    <script src="app.js"></script>
+    <script>
+        // Provide mock data to simulate RedM NUI message
+        window.addEventListener("DOMContentLoaded", () => {
+            window.postMessage({
+                action: "open",
+                shopId: "valentine_general",
+                shopName: "Valentine General Store",
+                marketType: "General Store",
+                mode: "buy",
+                items: [
+                    { name: "bread", label: "Fresh Bread", price: 0.50, description: "Daily baked country bread.", category: "Food", image: "https://raw.githubusercontent.com/femga/rdr3_discoveries/master/inventory/generic_textures/consumable_bread.png", stock: 24 },
+                    { name: "water", label: "Drinking Water", price: 0.25, description: "Clean fresh spring water.", category: "Food", image: "https://raw.githubusercontent.com/femga/rdr3_discoveries/master/inventory/generic_textures/consumable_water.png", stock: 40 },
+                    { name: "apple", label: "Crisp Apple", price: 0.50, description: "Sweet red orchard apple.", category: "Food", image: "https://raw.githubusercontent.com/femga/rdr3_discoveries/master/inventory/generic_textures/consumable_apple.png", stock: 18 },
+                    { name: "consumable_chocolate", label: "Chocolate Bar", price: 1.00, description: "Sweet chocolate confectionery.", category: "Food", image: "https://raw.githubusercontent.com/femga/rdr3_discoveries/master/inventory/generic_textures/consumable_chocolate.png", stock: 15 },
+                    { name: "canteen", label: "Leather Canteen", price: 5.00, description: "Durable canteen for carrying drinks.", category: "Equipment", image: "https://raw.githubusercontent.com/femga/rdr3_discoveries/master/inventory/generic_textures/canteen.png", stock: null },
+                    { name: "bandage", label: "Medical Bandage", price: 1.00, description: "Clean sterile cloth bandage.", category: "Medical", image: "https://raw.githubusercontent.com/femga/rdr3_discoveries/master/inventory/generic_textures/bandage.png", stock: null },
+                    { name: "petfood", label: "Pet Feed", price: 1.00, description: "Quality grain mix for companions.", category: "Pets", image: "https://raw.githubusercontent.com/femga/rdr3_discoveries/master/inventory/generic_textures/petfood.png", stock: 12 }
+                ],
+                locale: {
+                    cart: "Cart",
+                    search: "Search...",
+                    buy: "Purchase",
+                    close: "Close",
+                    empty: "No items available in this store.",
+                    total: "Total",
+                    success: "Purchase completed successfully."
+                }
+            }, "*");
+        });
+    </script>
+</body>
+</html>
