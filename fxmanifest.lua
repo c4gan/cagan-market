@@ -4,7 +4,7 @@ rdr3_warning 'I acknowledge that this is a prerelease build of RedM, and I am aw
 
 lua54 "yes"
 
-author "caganbey"
+author "cagan"
 description "cagan-market - Clean, Configurable Store & Shopping Cart System for RedM (VORP Core / RSG-Core)"
 version "1.0.0"
 

@@ -14,7 +14,7 @@
   <img src="https://img.shields.io/badge/RSG--Core-Supported-orange.svg?style=for-the-badge" alt="RSG-Core">
   <img src="https://img.shields.io/badge/Language-Lua%205.4-yellow.svg?style=for-the-badge&logo=lua" alt="Lua 5.4">
   <img src="https://img.shields.io/badge/License-MIT-green.svg?style=for-the-badge" alt="MIT License">
-  <img src="https://img.shields.io/badge/Author-caganbey-purple.svg?style=for-the-badge" alt="caganbey">
+  <img src="https://img.shields.io/badge/Author-cagan-purple.svg?style=for-the-badge" alt="cagan">
 </p>
 
 ---
@@ -75,7 +75,7 @@
 ## 📸 In-Game Showcase / Görsel
 
 <p align="center">
-  <img src="preview.png" alt="cagan-market In-Game Interface" width="520">
+  <img src="docs/preview.png" alt="cagan-market In-Game Interface" width="520">
 </p>
 
 ---
@@ -218,7 +218,7 @@ cagan-market/
 
 ## 📜 License & Credits
 
-- **Author**: `caganbey`
+- **Author**: `cagan`
 - **License**: [MIT License](LICENSE)
 - Special thanks to the RedM and CFX.re community.
 
